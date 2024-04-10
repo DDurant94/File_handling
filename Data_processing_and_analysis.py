@@ -43,54 +43,53 @@ showcasing data aggregation and analysis skills
 '''
 
 # Task one
-# Can't figure out how to get rid of \n at the end of each line
 import re
 import os
-# def read_file(filename):
-#     try:
-#         with open(filename, 'r') as file:
-#             working_file = file.readlines()
-#             return working_file
-#     except FileNotFoundError:
-#         print("File not found")
+def read_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            working_file = file.readlines()
+            return working_file
+    except FileNotFoundError:
+        print("File not found")
 
 
-# def search_keys(review):
-#     keys = {"Positive": r"amazing|wonderful|fantastic|enlightening",
-#            "Negative": r"bad|terrible|lackluster|poor|disappointing"
-#            }
-#     for category, code in keys.items():
-#         sorting_reviews = re.search(code,review)
-#         if sorting_reviews:
-#             return category
-#     return "Neutral"
+def search_keys(review):
+    keys = {"Positive": r"amazing|wonderful|fantastic|enlightening",
+           "Negative": r"bad|terrible|lackluster|poor|disappointing"
+           }
+    for category, code in keys.items():
+        sorting_reviews = re.search(code,review)
+        if sorting_reviews:
+            return category
+    return "Neutral"
 
 
-# def review_count(file):
-#     reviews = {"Positive": [], "Negative": [], "Neutral": []}
-#     for review in file:
-#         matching = search_keys(review)
-#         reviews[matching].append(review)
+def review_count(file):
+    reviews = {"Positive": [], "Negative": [], "Neutral": []}
+    for review in file:
+        matching = search_keys(review)
+        reviews[matching].append(review)
         
-#     for category, feedback in reviews.items():
-#        print(f"{category} Reviews: {len(feedback)}")
+    for category, feedback in reviews.items():
+       print(f"{category} Reviews: {len(feedback)}")
 
 
-# def main():
-#   file_list = read_file('question_three\\reviews.txt')
-#   print("Welcome:")
-#   while True:
-#     print("\nMain Menu:\n1. Review Count\n2. Exit")
-#     user_menu_input = input("Please select one of our menu options: ")
-#     if user_menu_input == "1":
-#         review_count(file_list)
-#     elif user_menu_input == "2":
-#         print("Thank you for using our program!")
-#         break
-#     else:
-#       print("Invalid input")
+def main():
+  file_list = read_file('question_three\\reviews.txt')
+  print("Welcome:")
+  while True:
+    print("\nMain Menu:\n1. Review Count\n2. Exit")
+    user_menu_input = input("Please select one of our menu options: ")
+    if user_menu_input == "1":
+        review_count(file_list)
+    elif user_menu_input == "2":
+        print("Thank you for using our program!")
+        break
+    else:
+      print("Invalid input")
 
-# main()
+main()
 
 
 
@@ -107,6 +106,7 @@ def read_file(filename):
             return dates_temps     
     except FileNotFoundError:
         print("We do not have records for that year")
+
 
 def average_temp(yearly_temps,date):
     try:

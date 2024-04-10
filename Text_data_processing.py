@@ -43,7 +43,6 @@ def read_contacts(filename):
                 rework = line.strip().split('-')
                 file_rewrite.append(rework)
             return file_rewrite
-                
     except FileNotFoundError:
         print("File not found")
 

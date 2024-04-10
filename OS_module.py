@@ -45,6 +45,9 @@ Expected Outcome:
 The script should accurately count and display the number of files for each extension type in the specified directory. 
 Handle different cases of file extensions (e.g., '.TXT' and '.txt' should be considered the same).
 '''
+
+#first_dir is all of the files for this program
+
 # Task one - Task three
 import os
 import re
@@ -91,17 +94,18 @@ def report_file_sizes(path):
 
 
 def count_file_extensions(path):
-   try:
+    # Can only see the amount of files of the parent directory to get a deeper count you have to type the path to get the count on a nested directory
+    try:
       organized_files = {"Text File":[], "Image File":[], "Directories":[]}
       list_of_files = list_directory_contents(path)
       for file in list_of_files:
         category_sorted = sorting_files(file)
         organized_files[category_sorted].append(file)
       print(f"File Count in Directory '{path}': Text Files: {len(organized_files['Text File'])}, Image Files: {len(organized_files['Image File'])}, Directories: {len(organized_files['Directories'])}")
-
-         
-   except:
-      pass
+    except FileNotFoundError as e:
+     print(f"Error: {e} That file doesn't exist")
+    except PermissionError:
+      print("This file Doesn't exist choose another file")
 
 
 def main():
